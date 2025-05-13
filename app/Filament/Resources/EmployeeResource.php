@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Filament\Resources;
-
 use App\Filament\Resources\EmployeeResource\Pages;
 use App\Models\Employee;
 use Filament\Forms;
@@ -9,6 +8,7 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Resources\Resource;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeeResource extends Resource
 {
@@ -93,4 +93,11 @@ class EmployeeResource extends Resource
             'index' => Pages\ManageEmployees::route('/'),
         ];
     }
+
+    public static function shouldRegisterNavigation(): bool
+{
+    return Auth::check() && Auth::user()->is_admin;
+
+}
+
 }

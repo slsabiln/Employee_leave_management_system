@@ -13,7 +13,7 @@ use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
-
+use Illuminate\Support\Facades\Auth;
 class LeaveTypeResource extends Resource
 {
     protected static ?string $model = LeaveType::class;
@@ -61,5 +61,10 @@ class LeaveTypeResource extends Resource
         return [
             'index' => Pages\ManageLeaveTypes::route('/'),
         ];
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return Auth::check() && Auth::user()->is_admin;
     }
 }
