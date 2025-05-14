@@ -20,6 +20,9 @@ LeaveType::factory()->count(5)->create();
     \App\Models\Employee::factory(10)->create();
     \App\Models\LeaveType::factory(3)->create();
     \App\Models\LeaveRequest::factory(20)->create();
+
+    $this->call(UserSeeder::class);
+
 }
 
 }

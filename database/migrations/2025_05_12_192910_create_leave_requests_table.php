@@ -11,6 +11,7 @@ return new class extends Migration
     Schema::create('leave_requests', function (Blueprint $table) {
         $table->id();
         $table->foreignId('employee_id')->constrained()->onDelete('cascade');
+        $table->unsignedBigInteger('leave_type_id');
         $table->foreignId('leave_type_id')->constrained()->onDelete('cascade');
         $table->date('from_date');
         $table->date('to_date');

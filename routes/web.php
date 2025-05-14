@@ -22,3 +22,10 @@ Route::get('/locale/{lang}', function ($lang) {
     }
     return redirect()->back();
 })->name('locale.switch');
+/*
+Route::get('locale/{locale}', function ($locale) {
+    session(['locale' => $locale]);
+    app()->setLocale($locale);
+    return redirect()->back();
+})->name('locale.switch');
+*/
